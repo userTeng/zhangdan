@@ -11,13 +11,17 @@ exports.main = async (event) => {
 
   })
   // 初始化数据库
+ 
   const db = cloud.database({
     env: wxContext.ENV === 'local' ? 'release-wifo3' : wxContext.ENV,
 
   });
+
+
   const _ = db.command;
   const { flow } = event;
   try {
+    
     // 先获取系统的分类, 或者某个用户创建的分类
     const query = {
       isDel: false,
@@ -34,6 +38,7 @@ exports.main = async (event) => {
         response.push(item)
       }
     })
+    //当我们得到的回复的数据成功后的实施
     if (response.length > 0) {
       res.data.forEach((item) => {
         response.forEach((one) => {

@@ -1,6 +1,7 @@
 <!--miniprogram/pages/morechart/maorechart.wxml-->
 <view class="filter">
   <view class="date-tip">切换时间</view>
+  <!--时间切换使用的picker组件-->
   <picker
     class="picker"
     mode="date"
@@ -24,7 +25,7 @@
   <view class="desc">
     {{month}}月记账折线图
   </view>
-
+<!--使用canvas组件来画折线图-->
   <canvas
     canvas-id="linechart-year"
     id="linechart-year"

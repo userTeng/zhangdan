@@ -11,18 +11,16 @@ exports.main = async (event) => {
 
   })
   // 初始化数据库
- 
   const db = cloud.database({
     env: wxContext.ENV === 'local' ? 'release-wifo3' : wxContext.ENV,
 
   });
-
-
   const _ = db.command;
   const { flow } = event;
   try {
     
     // 先获取系统的分类, 或者某个用户创建的分类
+	//根据open ID去寻找
     const query = {
       isDel: false,
       openId: _.eq(wxContext.OPENID).or(_.eq('SYSTEM')),
